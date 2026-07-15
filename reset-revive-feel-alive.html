@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kruger Retreat: Reset Revive and Feel Alive | Nov 29 – Dec 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --ivory:        #F6F3EC;
+  --sand:         #E9E2D3;
+  --stone:        #C9C0AC;
+  --charcoal:     #1A1A17;
+  --charcoal-soft:#26241F;
+  --forest:       #2E3B30;
+  --sage:         #8A9A85;
+  --clay:         #A9876A;
+  --text-dark:    #2B2A26;
+  --text-mid:     #5C5A52;
+  --text-light:   #F6F3EC;
+  --text-light-mid: rgba(246,243,236,0.72);
+  --border-light: #D8D1BF;
+  --border-dark:  rgba(246,243,236,0.14);
+  --serif:        'Cormorant Garamond', Georgia, serif;
+  --sans:         'Jost', 'Helvetica Neue', Arial, sans-serif;
+  --max-w:        1320px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--sans);
+  background: var(--ivory);
+  color: var(--text-dark);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.serif { font-family: var(--serif); }
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+h1 { font-size: clamp(2.8rem, 6vw, 5.5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+h4 { font-size: clamp(1.1rem, 1.8vw, 1.4rem); }
+p  { font-size: 1rem; color: var(--text-mid); }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
+.section { padding: clamp(4rem, 8vw, 7rem) 0; }
+.section-dark { background: var(--charcoal); color: var(--text-light); }
+.section-sand { background: var(--sand); }
+.section-forest { background: var(--forest); color: var(--text-light); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .grid-4 { grid-template-columns: 1fr; }
+}
+
+.text-center { text-align: center; }
+.mb-sm { margin-bottom: 0.75rem; }
+.mb-md { margin-bottom: 1.5rem; }
+.mb-lg { margin-bottom: 2.5rem; }
+.mb-xl { margin-bottom: 4rem; }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.fade-up.visible { opacity: 1; transform: none; }
+.fd-1 { transition-delay: 0.08s; }
+.fd-2 { transition-delay: 0.18s; }
+.fd-3 { transition-delay: 0.28s; }
+.fd-4 { transition-delay: 0.38s; }
+.fd-5 { transition-delay: 0.48s; }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.4rem clamp(1.25rem, 5vw, 3rem);
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.4s ease, padding 0.4s ease;
+}
+#nav.solid {
+  background: rgba(26,26,23,0.96);
+  backdrop-filter: blur(8px);
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--text-light);
+  letter-spacing: 0.04em;
+}
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-light-mid); transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text-light); }
+.nav-links .btn-nav {
+  background: var(--clay); color: var(--text-light);
+  padding: 0.55rem 1.4rem; border-radius: 2px;
+  letter-spacing: 0.1em; transition: background 0.2s;
+}
+.nav-links .btn-nav:hover { background: #c09a7a; }
+@media (max-width: 768px) { .nav-links { display: none; } }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-block; font-family: var(--sans);
+  font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 1rem 2.6rem; border: none; cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--clay); color: var(--text-light); }
+.btn-primary:hover { background: #c09a7a; }
+.btn-outline { background: transparent; border: 1px solid var(--text-light); color: var(--text-light); }
+.btn-outline:hover { background: rgba(246,243,236,0.1); }
+.btn-forest { background: var(--forest); color: var(--text-light); }
+.btn-forest:hover { background: #3a4a3c; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero {
+  min-height: 100vh;
+  background: url('images/optimized/landing-page-header.jpg') center 45% / cover no-repeat;
+  display: flex; align-items: flex-end;
+  padding-bottom: clamp(3rem, 8vh, 6rem);
+  position: relative;
+}
+#hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(26,26,23,0.15) 0%, rgba(26,26,23,0.08) 40%, rgba(26,26,23,0.7) 100%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 860px; }
+.hero-content .eyebrow { color: rgba(246,243,236,0.75); margin-bottom: 1rem; }
+.hero-content h1 {
+  color: var(--text-light); font-weight: 300; font-style: italic;
+  line-height: 1.1; margin-bottom: 1.25rem;
+}
+.hero-content h1 em { font-style: normal; font-weight: 500; }
+.hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.2rem); color: var(--text-light-mid);
+  margin-bottom: 2.25rem; max-width: 560px;
+  font-family: var(--sans); font-weight: 300; letter-spacing: 0.03em;
+}
+.hero-meta {
+  display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+}
+.hero-meta span {
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light-mid);
+}
+.hero-meta span strong { color: var(--text-light); font-weight: 600; }
+
+/* ============================================================
+   OVERVIEW STRIP
+   ============================================================ */
+.overview-strip { background: var(--charcoal-soft); padding: 2rem 0; }
+.overview-strip-inner {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem 4rem;
+}
+.overview-item { text-align: center; }
+.overview-item .num {
+  display: block; font-family: var(--serif); font-size: 2.2rem;
+  color: var(--clay); line-height: 1; margin-bottom: 0.25rem;
+}
+.overview-item .lbl {
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone);
+}
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+.section-header { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.section-header .eyebrow { margin-bottom: 0.75rem; }
+.section-header p { max-width: 620px; margin: 0.75rem 0 0; font-size: 1.05rem; }
+.section-header.center { text-align: center; }
+.section-header.center p { margin-left: auto; margin-right: auto; }
+.section-header-light h2, .section-header-light p { color: var(--text-light); }
+.section-header-light p { color: var(--text-light-mid); }
+
+/* ============================================================
+   WHY THIS RETREAT
+   ============================================================ */
+.why-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch;
+}
+.why-image { position: relative; min-height: 520px; }
+.why-image img { width: 100%; height: 100%; object-fit: cover; }
+.why-content {
+  padding: clamp(2.5rem, 6vw, 5rem);
+  background: var(--sand);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.why-content .eyebrow { margin-bottom: 1rem; }
+.why-content h2 { margin-bottom: 1.5rem; }
+.why-content p { margin-bottom: 1.25rem; font-size: 1.05rem; line-height: 1.8; }
+.why-list { margin: 1.5rem 0; }
+.why-list li {
+  padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);
+  font-size: 0.95rem; color: var(--text-mid);
+  display: flex; align-items: flex-start; gap: 0.75rem;
+}
+.why-list li::before { content: '—'; color: var(--clay); flex-shrink: 0; margin-top: 0.1em; }
+@media (max-width: 900px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .why-image { min-height: 320px; }
+}
+
+/* ============================================================
+   EXPERIENCE CARDS
+   ============================================================ */
+.exp-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--stone);
+}
+@media (min-width: 900px) { .exp-grid { grid-template-columns: repeat(4, 1fr); } }
+.exp-card { background: var(--ivory); overflow: hidden; }
+.exp-card-img {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block;
+  transition: transform 0.6s ease;
+}
+.exp-card:hover .exp-card-img { transform: scale(1.04); }
+.exp-card-body { padding: 1.5rem 1.5rem 2rem; }
+.exp-card-body .eyebrow { margin-bottom: 0.5rem; }
+.exp-card-body h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+.exp-card-body p { font-size: 0.92rem; }
+
+/* ============================================================
+   YOGA + DECK SPLIT
+   ============================================================ */
+.split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; }
+.split-content {
+  padding: clamp(3rem, 6vw, 5rem);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.split-content .eyebrow { margin-bottom: 0.75rem; }
+.split-content h2 { margin-bottom: 1.25rem; }
+.split-content p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem; }
+.split-image { overflow: hidden; min-height: 480px; }
+.split-image img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 900px) {
+  .split-section { grid-template-columns: 1fr; }
+  .split-image { min-height: 300px; }
+}
+
+/* ============================================================
+   DAILY RHYTHM
+   ============================================================ */
+.rhythm-section { background: var(--charcoal); }
+.rhythm-intro {
+  font-size: 0.88rem; color: var(--stone); font-style: italic;
+  margin-bottom: 2.5rem; font-family: var(--serif); line-height: 1.7;
+}
+.schedule-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1px; background: var(--border-dark);
+}
+.schedule-item {
+  background: var(--charcoal); padding: 2rem 1.75rem;
+  border: 1px solid var(--border-dark); transition: background 0.3s ease;
+}
+.schedule-item:hover { background: var(--charcoal-soft); }
+.schedule-time {
+  font-family: var(--serif); font-size: 1.05rem; font-style: italic;
+  color: var(--clay); margin-bottom: 0.5rem;
+}
+.schedule-title {
+  font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.5rem;
+}
+.schedule-detail p { font-size: 0.9rem; color: var(--stone); line-height: 1.6; }
+
+/* ============================================================
+   EXTRA ACTIVITIES
+   ============================================================ */
+.extras-section { background: var(--sand); }
+.extras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.extras-col h3 {
+  font-size: 1.2rem; font-family: var(--sans); font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dark);
+  margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--clay);
+}
+.extras-list li {
+  padding: 0.75rem 0; border-bottom: 1px solid var(--border-light);
+  font-size: 0.95rem; color: var(--text-mid);
+  display: flex; align-items: flex-start; gap: 0.75rem;
+}
+.extras-list li .icon { color: var(--clay); flex-shrink: 0; font-size: 1rem; margin-top: 0.05em; }
+.extras-list li strong { color: var(--text-dark); display: block; margin-bottom: 0.15rem; }
+.extras-images {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem;
+}
+.extras-images img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+@media (max-width: 700px) {
+  .extras-grid { grid-template-columns: 1fr; }
+  .extras-images { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================================
+   FULL BLEED BREAK
+   ============================================================ */
+.full-bleed {
+  width: 100vw; position: relative; left: 50%; transform: translateX(-50%);
+  height: clamp(260px, 40vw, 520px); overflow: hidden;
+}
+.full-bleed img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
+.full-bleed-caption {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.4rem); color: var(--text-light);
+  text-align: center; white-space: nowrap; text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+/* ============================================================
+   SAFARI SECTION
+   ============================================================ */
+.safari-hero { position: relative; height: clamp(320px, 50vw, 620px); overflow: hidden; margin-bottom: 1px; }
+.safari-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+.safari-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,26,23,0.75) 0%, transparent 60%);
+  display: flex; align-items: flex-end; padding: clamp(1.5rem, 4vw, 3rem);
+}
+.safari-hero-overlay h2 { color: var(--text-light); font-size: clamp(1.8rem, 4vw, 3rem); }
+.safari-gallery {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--charcoal);
+}
+.safari-gallery-item { overflow: hidden; aspect-ratio: 4/3; }
+.safari-gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.safari-gallery-item:hover img { transform: scale(1.04); }
+.safari-gallery-wide {
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1px; background: var(--charcoal);
+}
+.safari-gallery-wide > .wide-item { overflow: hidden; }
+.safari-gallery-wide img { width: 100%; height: 100%; object-fit: cover; min-height: 280px; }
+@media (max-width: 700px) {
+  .safari-gallery { grid-template-columns: 1fr 1fr; }
+  .safari-gallery-wide { grid-template-columns: 1fr 1fr; }
+}
+.safari-content { padding: clamp(3rem, 6vw, 5rem) 0; }
+.safari-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.safari-fact { border-left: 2px solid var(--clay); padding-left: 1.25rem; }
+.safari-fact h4 {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.4rem;
+}
+.safari-fact p { font-size: 0.92rem; line-height: 1.6; }
+@media (max-width: 700px) { .safari-facts { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   NOURISHMENT
+   ============================================================ */
+.nourish-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--stone); margin-bottom: 1px;
+}
+.nourish-cell { overflow: hidden; aspect-ratio: 1/1; }
+.nourish-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.nourish-cell:hover img { transform: scale(1.04); }
+.nourish-cell.wide { grid-column: span 2; aspect-ratio: auto; min-height: 260px; }
+.nourish-cell.wide img { height: 100%; }
+.nourish-cell.full-row { grid-column: 1 / -1; aspect-ratio: auto; min-height: 340px; }
+.nourish-cell.full-row img { height: 100%; }
+@media (max-width: 700px) {
+  .nourish-grid { grid-template-columns: 1fr 1fr; }
+  .nourish-cell.full-row { grid-column: 1 / -1; }
+  .nourish-cell.wide { grid-column: span 2; }
+}
+
+/* ============================================================
+   GUIDES
+   ============================================================ */
+.guide-card { background: var(--ivory); border: 1px solid var(--border-light); overflow: hidden; }
+.guide-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center; }
+.guide-body { padding: 2rem 1.75rem; }
+.guide-body .eyebrow { margin-bottom: 0.4rem; }
+.guide-body h3 { margin-bottom: 0.25rem; }
+.guide-role {
+  font-size: 0.82rem; color: var(--sage); letter-spacing: 0.08em;
+  margin-bottom: 1rem; font-weight: 500;
+}
+.guide-body p { font-size: 0.92rem; line-height: 1.7; }
+
+/* ============================================================
+   TESTIMONIAL PANEL (David K + Harry Video)
+   ============================================================ */
+.testimonial-panel { background: var(--charcoal); padding: clamp(4rem, 8vw, 7rem) 0; }
+.testimonial-split {
+  display: grid; grid-template-columns: 2fr 3fr; gap: 0; align-items: center;
+}
+.testimonial-quote {
+  padding: clamp(2.5rem, 5vw, 4rem);
+  border-right: 1px solid var(--border-dark);
+}
+.testimonial-quote blockquote {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem); line-height: 1.8;
+  color: var(--text-light); margin-bottom: 1.5rem;
+}
+.testimonial-quote cite {
+  font-size: 0.78rem; font-style: normal; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--clay);
+}
+.testimonial-video { padding: clamp(2rem, 4vw, 3rem); }
+.testimonial-video video {
+  width: 100%; display: block; background: var(--charcoal-soft);
+  border: 1px solid var(--border-dark);
+}
+.testimonial-video-caption {
+  margin-top: 1rem; font-size: 0.9rem; color: var(--stone);
+  font-style: italic; font-family: var(--serif); text-align: center; letter-spacing: 0.02em;
+}
+/* Video play button overlay */
+.video-wrapper { position: relative; display: block; }
+.video-play-btn {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(26,26,23,0.22); border: none; cursor: pointer;
+  transition: background 0.25s ease; z-index: 2;
+}
+.video-play-btn:hover { background: rgba(26,26,23,0.08); }
+.video-play-btn.hidden { display: none; }
+.video-play-icon {
+  width: 88px; height: 88px;
+  filter: drop-shadow(0 4px 24px rgba(0,0,0,0.65));
+  transition: transform 0.2s ease;
+}
+.video-play-btn:hover .video-play-icon { transform: scale(1.1); }
+@media (max-width: 768px) {
+  .testimonial-split { grid-template-columns: 1fr; }
+  .testimonial-quote { border-right: none; border-bottom: 1px solid var(--border-dark); }
+}
+
+/* ============================================================
+   ACCOMMODATION
+   ============================================================ */
+.lodge-hero { position: relative; height: clamp(360px, 52vw, 640px); overflow: hidden; }
+.lodge-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+.lodge-hero-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(26,26,23,0.82) 0%, transparent 100%);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+}
+.lodge-hero-caption h2 { color: var(--text-light); }
+.lodge-hero-caption p { color: var(--text-light-mid); max-width: 540px; margin-top: 0.75rem; }
+
+.lodge-rooms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--stone); }
+.lodge-room-item { overflow: hidden; aspect-ratio: 4/3; }
+.lodge-room-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.lodge-room-item:hover img { transform: scale(1.03); }
+@media (max-width: 700px) { .lodge-rooms-grid { grid-template-columns: 1fr 1fr; } }
+
+.lodge-amenities { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: var(--stone); }
+.lodge-amenity-img { overflow: hidden; min-height: 300px; }
+.lodge-amenity-img img { width: 100%; height: 100%; object-fit: cover; }
+.lodge-amenity-list {
+  background: var(--ivory); padding: clamp(2.5rem, 5vw, 4rem);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.lodge-amenity-list h3 { margin-bottom: 1.5rem; }
+.lodge-amenity-list li {
+  padding: 0.55rem 0; border-bottom: 1px solid var(--border-light);
+  font-size: 0.93rem; color: var(--text-mid); display: flex; gap: 0.75rem;
+}
+.lodge-amenity-list li::before { content: '✓'; color: var(--sage); flex-shrink: 0; }
+@media (max-width: 700px) {
+  .lodge-amenities { grid-template-columns: 1fr; }
+  .lodge-amenity-img { min-height: 220px; }
+}
+
+/* ============================================================
+   WHO THIS IS FOR
+   ============================================================ */
+.who-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.who-card { padding: 2rem 1.75rem; background: var(--sand); border-bottom: 3px solid var(--clay); }
+.who-card h4 {
+  font-family: var(--sans); font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.75rem;
+}
+.who-card p { font-size: 0.95rem; }
+@media (max-width: 600px) { .who-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   WHAT'S INCLUDED
+   ============================================================ */
+.included-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-dark); }
+.included-item {
+  background: rgba(255,255,255,0.04); padding: 1.5rem 1.75rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.included-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1em; }
+.included-item h4 {
+  font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.3rem;
+}
+.included-item p { font-size: 0.88rem; color: var(--stone); }
+@media (max-width: 600px) { .included-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-section { background: var(--ivory); }
+.faq-group { margin-bottom: 3.5rem; }
+.faq-group-title {
+  font-family: var(--sans); font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--clay);
+  margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-light);
+}
+.faq-item { border-bottom: 1px solid var(--border-light); }
+.faq-question {
+  width: 100%; background: none; border: none; text-align: left;
+  padding: 1.3rem 0; display: flex; justify-content: space-between;
+  align-items: center; gap: 1.5rem; cursor: pointer;
+  font-family: var(--serif); font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: var(--text-dark); line-height: 1.4;
+}
+.faq-question:hover { color: var(--clay); }
+.faq-icon {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+  border: 1px solid var(--border-light); display: flex; align-items: center;
+  justify-content: center; font-size: 1rem; color: var(--clay); transition: transform 0.3s ease;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.45s ease; }
+.faq-answer-inner { padding: 0 0 1.5rem; font-size: 0.97rem; line-height: 1.8; color: var(--text-mid); }
+.faq-answer-inner p { margin-bottom: 0.75rem; }
+.faq-answer-inner p:last-child { margin-bottom: 0; }
+.faq-answer-inner ul { margin: 0.5rem 0 0.75rem; list-style: none; }
+.faq-answer-inner ul li {
+  padding: 0.3rem 0 0.3rem 1.25rem;
+  position: relative; font-size: 0.95rem;
+}
+.faq-answer-inner ul li::before { content: '—'; position: absolute; left: 0; color: var(--clay); }
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.pricing-section { background: var(--charcoal); }
+.pricing-single {
+  max-width: 640px; margin: 0 auto;
+  background: var(--forest); padding: clamp(2.5rem, 5vw, 4rem);
+}
+.pricing-badge {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--clay); background: rgba(169,135,106,0.12);
+  border: 1px solid rgba(169,135,106,0.3); padding: 0.3rem 0.85rem;
+  display: inline-block; margin-bottom: 1.25rem;
+}
+.pricing-single h3 { color: var(--text-light); margin-bottom: 0.5rem; font-size: clamp(1.3rem, 2vw, 1.8rem); }
+.pricing-price {
+  font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.5rem);
+  color: var(--clay); line-height: 1; margin-bottom: 0.25rem;
+}
+.pricing-price span { font-size: 1rem; font-family: var(--sans); color: var(--stone); font-weight: 300; }
+.pricing-note { font-size: 0.82rem; color: var(--stone); margin-bottom: 2rem; letter-spacing: 0.04em; }
+.pricing-features { margin-bottom: 2rem; }
+.pricing-features li {
+  padding: 0.5rem 0; border-bottom: 1px solid var(--border-dark);
+  font-size: 0.88rem; color: var(--stone); display: flex; gap: 0.75rem;
+}
+.pricing-features li::before { content: '✓'; color: var(--sage); flex-shrink: 0; }
+.pricing-notes {
+  margin-top: 2rem; padding: 1.5rem 2rem;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border-dark);
+  font-size: 0.88rem; color: var(--stone); line-height: 1.8;
+}
+.pricing-notes p { margin-bottom: 0.5rem; }
+.pricing-notes p:last-child { margin-bottom: 0; }
+.cancellation-box {
+  max-width: 640px; margin: 2rem auto 0;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border-dark);
+  padding: 2rem 2.25rem;
+}
+.cancellation-box h4 {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem;
+}
+.cancellation-box p { font-size: 0.9rem; color: var(--stone); line-height: 1.7; }
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta-section {
+  background: var(--forest); text-align: center;
+  padding: clamp(5rem, 10vw, 8rem) clamp(1.25rem, 5vw, 3rem);
+}
+.cta-section .eyebrow { color: rgba(138,154,133,0.8); margin-bottom: 1rem; }
+.cta-section h2 { color: var(--text-light); max-width: 680px; margin: 0 auto 1.5rem; font-size: clamp(2rem, 4vw, 3.2rem); }
+.cta-section p { color: var(--text-light-mid); max-width: 480px; margin: 0 auto 2.5rem; font-size: 1.05rem; }
+.cta-meta { margin-top: 2rem; font-size: 0.8rem; color: rgba(138,154,133,0.7); letter-spacing: 0.1em; }
+
+/* ============================================================
+   APPLICATION FORM
+   ============================================================ */
+.form-section { background: var(--sand); }
+.form-inner { max-width: 680px; margin: 0 auto; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group.full { grid-column: span 2; }
+.form-group label {
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dark);
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 0.9rem 1rem;
+  border: 1px solid var(--border-light); background: var(--ivory);
+  font-family: var(--sans); font-size: 0.95rem; color: var(--text-dark);
+  transition: border-color 0.2s; outline: none; -webkit-appearance: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--clay); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-submit { text-align: center; margin-top: 2rem; }
+.form-disclaimer { font-size: 0.8rem; color: var(--text-mid); text-align: center; margin-top: 1rem; }
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: span 1; }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--charcoal); padding: 2.5rem clamp(1.25rem, 5vw, 3rem);
+  text-align: center; border-top: 1px solid var(--border-dark);
+}
+footer p { font-size: 0.8rem; color: var(--stone); margin-bottom: 1rem; }
+.footer-apply {
+  display: inline-block; font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay);
+  border-bottom: 1px solid rgba(169,135,106,0.4); padding-bottom: 0.1rem; transition: color 0.2s;
+}
+.footer-apply:hover { color: #c09a7a; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Kruger Retreat</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#safari">Safari</a></li>
+    <li><a href="#guides">Your Team</a></li>
+    <li><a href="#lodge">Lodge</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://tally.so/r/PdPa81" target="_blank" rel="noopener" class="btn-nav">Apply Now</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <p class="eyebrow fade-up">Greater Kruger National Park, South Africa</p>
+      <h1 class="fade-up fd-1">Kruger Retreat:<br><em>Reset, Revive</em><br>and Feel Alive</h1>
+      <p class="hero-sub fade-up fd-2">Six nights in the African wilderness. Safari mornings, stillness practices, and nourishing plant-based meals — all in a luxury bush lodge.</p>
+      <div class="hero-meta fade-up fd-3">
+        <span><strong>29 November – 5 December 2025</strong></span>
+        <span><strong>6 Nights</strong> · All-Inclusive</span>
+        <span>Greater Kruger, South Africa</span>
+      </div>
+      <div class="fade-up fd-4">
+        <a href="https://tally.so/r/PdPa81" target="_blank" rel="noopener" class="btn btn-primary">Reserve Your Place</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW STRIP — Nov 1 deadline removed per revision -->
+<div class="overview-strip">
+  <div class="container">
+    <div class="overview-strip-inner">
+      <div class="overview-item">
+        <span class="num">6</span>
+        <span class="lbl">Nights</span>
+      </div>
+      <div class="overview-item">
+        <span class="num">2×</span>
+        <span class="lbl">Daily Safaris</span>
+      </div>
+      <div class="overview-item">
+        <span class="num">3</span>
+        <span class="lbl">Facilitators</span>
+      </div>
+      <div class="overview-item">
+        <span class="num">Big 5</span>
+        <span class="lbl">Wildlife Territory</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     WHY THIS RETREAT — no padding-top, sits flush with strip
+     ============================================================ -->
+<section id="why" class="section" style="padding-top:0;">
+  <div class="why-grid">
+    <div class="why-image fade-up">
+      <img src="images/optimized/river-overlook-community.jpg" alt="Guests overlooking the river at dusk in the African wilderness" loading="lazy">
+    </div>
+    <div class="why-content">
+      <p class="eyebrow fade-up">Why This Retreat</p>
+      <h2 class="fade-up fd-1">More than a trip.<br>A genuine reset.</h2>
+      <p class="fade-up fd-2">Most retreats give you relaxation. This one gives you a deeply profound experience in the African bush.</p>
+      <ul class="why-list fade-up fd-3">
+        <li>Two game drives daily in prime Big Five territory</li>
+        <li>Morning yoga, breathwork, and meditation — all optional</li>
+        <li>Sound healing, art, and stargazing evenings</li>
+        <li>Nourishing vegetarian and plant-based meals</li>
+        <li>Small group — space to connect and space to be alone</li>
+        <li>One luxury lodge, fully exclusive to the retreat</li>
+      </ul>
+      <div class="fade-up fd-4" style="margin-top:2rem;">
+        <a href="https://tally.so/r/PdPa81" target="_blank" rel="noopener" class="btn btn-primary">Apply for the Retreat</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHAT YOU'LL EXPERIENCE
+     ============================================================ -->
+<section id="experience" class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <p class="eyebrow">What You'll Experience</p>
+      <h2>Daily practices and adventures in the wild</h2>
+      <p>Takeaway practices that actually land. Each session is designed for real life — gentle, accessible, and grounded in what works.</p>
+    </div>
+  </div>
+  <div class="exp-grid">
+    <!-- Card 1: Yoga -->
+    <div class="exp-card fade-up">
+      <img class="exp-card-img" src="images/optimized/studio-yoga.jpg" alt="Yoga practice in the studio" loading="lazy">
+      <div class="exp-card-body">
+        <h3>Yoga</h3>
+        <p>Yoga and movement on the deck, in nature, at your own pace.</p>
+      </div>
+    </div>
+    <!-- Card 2: Breathwork -->
+    <div class="exp-card fade-up fd-1">
+      <img class="exp-card-img" src="images/optimized/breathwork-circle-river.jpg" alt="Group breathwork practice" loading="lazy">
+      <div class="exp-card-body">
+        <h3>Breathwork</h3>
+        <p>Simple techniques that shift how you feel in minutes — calming, energising, or deeply grounding.</p>
+      </div>
+    </div>
+    <!-- Card 3: Daily Game Drive -->
+    <div class="exp-card fade-up fd-2">
+      <img class="exp-card-img" src="images/optimized/animal-viewing-river.jpg" alt="Open game drive in the African wilderness" loading="lazy">
+      <div class="exp-card-body">
+        <h3>Game Drive</h3>
+        <p>Sunrise and afternoon drives through prime Big Five territory with experienced local guides.</p>
+      </div>
+    </div>
+    <!-- Card 4: Guided Bushwalks -->
+    <div class="exp-card fade-up fd-3">
+      <img class="exp-card-img" src="images/optimized/bush-walk-group.jpg" alt="Group gathered around the ranger during a guided bushwalk" loading="lazy">
+      <div class="exp-card-body">
+        <h3>Guided Bushwalks</h3>
+        <p>On-foot exploration with your ranger — moving quietly through the African wilderness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YOGA + DECK SPLIT -->
+<div class="split-section">
+  <div class="split-content" style="background:var(--sand);">
+    <p class="eyebrow fade-up">Yoga &amp; Movement</p>
+    <h2 class="fade-up fd-1">On the deck. In the wild. At your own pace.</h2>
+    <p class="fade-up fd-2">Morning sessions begin before the heat arrives — often on the open deck, overlooking the tree line. Sessions are short, accessible, and intentionally designed to complement the physical demands of safari.</p>
+    <p class="fade-up fd-3">No prior experience needed. No poses to master. Come in your pyjamas if you want.</p>
+  </div>
+  <div class="split-image fade-up">
+    <img src="images/optimized/meditation-deck.jpg" alt="Meditation deck with view over the African wilderness" loading="lazy">
+  </div>
+</div>
+
+<!-- ============================================================
+     DAILY RHYTHM
+     ============================================================ -->
+<section id="rhythm" class="section rhythm-section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="eyebrow" style="color:var(--clay);">A Day in the Wild</p>
+      <h2 style="color:var(--text-light);">Your daily rhythm</h2>
+    </div>
+    <p class="rhythm-intro fade-up fd-1">Each day finds its own shape — guided by wildlife activity, the energy of the group, and what the African wilderness brings.</p>
+    <div class="schedule-grid">
+      <div class="schedule-item fade-up">
+        <p class="schedule-time">Early Morning</p>
+        <div class="schedule-detail">
+          <p class="schedule-title">Morning Reset</p>
+          <p>Optional gentle movement, breathwork, and meditation before the day begins. The African wilderness is still. The light is extraordinary.</p>
+        </div>
+      </div>
+      <div class="schedule-item fade-up fd-1">
+        <p class="schedule-time">Sunrise</p>
+        <div class="schedule-detail">
+          <p class="schedule-title">Sunrise Safari</p>
+          <p>Game drive or guided bushwalk during peak wildlife activity. Coffee in the wild. Africa at its most alive.</p>
+        </div>
+      </div>
+      <div class="schedule-item fade-up fd-2">
+        <p class="schedule-time">Mid-Morning</p>
+        <div class="schedule-detail">
+          <p class="schedule-title">Breakfast</p>
+          <p>Nourishing vegetarian and plant-based spread. Take your time. Share what you saw.</p>
+        </div>
+      </div>
+      <div class="schedule-item fade-up fd-3">
+        <p class="schedule-time">Late Morning</p>
+        <div class="schedule-detail">
+          <p class="schedule-title">Free Time</p>
+          <p>Rest, swim, book a treatment, journal, photograph wildlife, or simply sit and watch the world go by.</p>
+        </div>
+      </div>
+      <div class="schedule-item fade-up">
+        <p class="schedule-time">Afternoon</p>
+        <div class="schedule-detail">
+          <p class="schedule-title">Yoga or Bush Wisdom</p>
+          <p>Yoga session or Bush Wisdom gathering before heading back into the wild.</p>
+        </div>
+      </div>
+      <div class="schedule-item fade-up fd-1">
+        <p class="schedule-time">Late Afternoon</p>
+        <div class="schedule-detail">
+          <p class="schedule-title">Afternoon Safari</p>
+          <p>Second game drive as the heat softens. Sundowners in the African bush as the sun goes down.</p>
+        </div>
+      </div>
+      <div class="schedule-item fade-up fd-2">
+        <p class="schedule-time">Evening</p>
+        <div class="schedule-detail">
+          <p class="schedule-title">Dinner Together</p>
+          <p>Long-table dining under the African sky. Plant-based meals made with seasonal ingredients.</p>
+        </div>
+      </div>
+      <div class="schedule-item fade-up fd-3">
+        <p class="schedule-time">Night</p>
+        <div class="schedule-detail">
+          <p class="schedule-title">Sound Healing · Fire · Stars</p>
+          <p>Group sound bath, fire circle, guided stargazing, or yin yoga. Then sleep — deeply.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXTRA ACTIVITIES
+     ============================================================ -->
+<section id="extras" class="section extras-section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="eyebrow">Extra Activities</p>
+      <h2>More to discover</h2>
+      <p>Beyond the core programme, there is space to explore, create, and go deeper.</p>
+    </div>
+    <div class="extras-grid">
+      <div class="fade-up">
+        <h3>Included at no extra cost</h3>
+        <ul class="extras-list">
+          <li>
+            <span class="icon">✦</span>
+            <div>
+              <strong>Expert Guided Bushwalks</strong>
+              On-foot exploration with experienced local rangers through the African wilderness.
+            </div>
+          </li>
+          <li>
+            <span class="icon">✦</span>
+            <div>
+              <strong>Art Classes</strong>
+              Guided painting and creative expression sessions — no experience needed. A quiet way to process the experience.
+            </div>
+          </li>
+          <li>
+            <span class="icon">✦</span>
+            <div>
+              <strong>Stargazing Evenings</strong>
+              Far from city lights, the night sky over Greater Kruger is breathtaking. On select evenings we gather beneath the stars.
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="fade-up fd-1">
+        <h3>Available at additional cost</h3>
+        <ul class="extras-list">
+          <li>
+            <span class="icon">◇</span>
+            <div>
+              <strong>Individual Sound Bowl Healing with Vitaliy</strong>
+              Private on-the-body Tibetan singing bowl session. Bowls placed on and around the body for deep relaxation.
+            </div>
+          </li>
+          <li>
+            <span class="icon">◇</span>
+            <div>
+              <strong>Nervous System Reset Session with Tarin</strong>
+              Private 1:1 session tailored to your specific patterns and needs.
+            </div>
+          </li>
+          <li>
+            <span class="icon">◇</span>
+            <div>
+              <strong>Energy Healing with Brittany</strong>
+              Private 1:1 energy healing session. Deeply restorative and personalised.
+            </div>
+          </li>
+          <li>
+            <span class="icon">◇</span>
+            <div>
+              <strong>Spa &amp; Massage Treatments</strong>
+              The spa is open throughout the retreat. A full menu of spa and massage treatments is available to book at an additional cost.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 4-image row: art, workshop, meditation, herb detail -->
+    <div class="extras-images fade-up fd-2" style="grid-template-columns:repeat(4,1fr);">
+      <img src="images/optimized/art-workshop.jpg" alt="Art and painting workshop" loading="lazy">
+      <img src="images/optimized/workshop-nervous-system.jpg" alt="Workshop session" loading="lazy">
+      <img src="images/optimized/golden-hour-meditation-circle.jpg" alt="Evening gathering under open sky" loading="lazy">
+      <img src="images/optimized/herb-picking-detail.jpg" alt="Herb and ingredient detail" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- FULL BLEED BREAK: Amazing elephant shot -->
+<div class="full-bleed">
+  <img src="images/optimized/amazing-elephant-shot.jpg" alt="Elephant herd silhouette at dusk over the river in Greater Kruger" loading="lazy">
+  <p class="full-bleed-caption">Greater Kruger National Park</p>
+</div>
+
+<!-- ============================================================
+     SAFARI EXPERIENCE
+     ============================================================ -->
+<section id="safari" class="section-dark" style="padding:0;">
+  <div class="safari-hero">
+    <img src="images/optimized/game-drive.jpg" alt="Open game drive vehicle in the African wilderness" loading="lazy">
+    <div class="safari-hero-overlay">
+      <h2>The Safari Experience</h2>
+    </div>
+  </div>
+  <!-- Gallery row 1 -->
+  <div class="safari-gallery">
+    <div class="safari-gallery-item">
+      <img src="images/optimized/south-africa-safari-elephant.jpg" alt="Elephant in the Greater Kruger" loading="lazy">
+    </div>
+    <div class="safari-gallery-item">
+      <img src="images/optimized/animal-shot.jpg" alt="Kudu portrait in golden light" loading="lazy">
+    </div>
+    <div class="safari-gallery-item">
+      <img src="images/optimized/giraffe.jpg" alt="Giraffe at dusk" loading="lazy">
+    </div>
+  </div>
+  <!-- Safari content -->
+  <div class="container">
+    <div class="safari-content">
+      <div class="section-header section-header-light fade-up">
+        <p class="eyebrow">Two Safaris Daily</p>
+        <h2 style="color:var(--text-light);">Big Five territory.<br>No two drives the same.</h2>
+      </div>
+      <p class="fade-up fd-1" style="color:var(--stone); font-size:1.05rem; max-width:700px; line-height:1.8;">Greater Kruger is one of the world's premier wildlife destinations. You will head out at sunrise and again in the late afternoon — the hours when lions move, elephants drink, and leopards slip through the light. Experienced local guides lead every drive.</p>
+      <div class="safari-facts fade-up fd-2">
+        <div class="safari-fact">
+          <h4>Big Five</h4>
+          <p>Lion, leopard, elephant, rhinoceros, and buffalo — all present in Greater Kruger territory.</p>
+        </div>
+        <div class="safari-fact">
+          <h4>Also Possible</h4>
+          <p>Giraffe, zebra, cheetah, hippo, crocodile, hyena, kudu, wildebeest, hundreds of bird species.</p>
+        </div>
+        <div class="safari-fact">
+          <h4>2× Daily</h4>
+          <p>Sunrise drive and afternoon drive — the two windows when wildlife is most active. Plus guided bushwalks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Gallery row 2 -->
+  <div class="safari-gallery-wide">
+    <div class="wide-item">
+      <img src="images/optimized/hippo-viewing.jpg" alt="Guest watching hippo in the river" loading="lazy">
+    </div>
+    <div class="wide-item">
+      <img src="images/optimized/guests-on-rocks-bush.jpg" alt="Guests taking in the African wilderness from a rocky outcrop" loading="lazy">
+    </div>
+    <div class="wide-item">
+      <img src="images/optimized/sundowner-rocky-sunset.jpg" alt="Sundowner drinks at sunset in the African wilderness" loading="lazy">
+    </div>
+  </div>
+  <!-- River vista + animal viewing -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--charcoal);">
+    <div style="overflow:hidden; min-height:300px;">
+      <img src="images/optimized/river-vista-guests.jpg" alt="Guests taking in the river view in the African wilderness" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="overflow:hidden; min-height:300px;">
+      <img src="images/optimized/animal-viewing-river.jpg" alt="Wide landscape game drive by the river" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     NOURISHMENT
+     Restaurant first, then food photos. Herb image moved to Extras.
+     ============================================================ -->
+<section id="food" class="section" style="padding-bottom:0;">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="eyebrow">Nourishment</p>
+      <h2>Food that supports the experience</h2>
+      <p>Every meal is vegetarian or plant-based — prepared with fresh seasonal ingredients and designed to sustain energy through long safari days and active practices. If you have dietary restrictions or allergies, let us know and we will accommodate you.</p>
+    </div>
+  </div>
+  <div class="nourish-grid">
+    <!-- Restaurant first, full width -->
+    <div class="nourish-cell full-row">
+      <img src="images/optimized/restaurant-nourish.jpg" alt="Restaurant dining setting at Nourish" loading="lazy">
+    </div>
+    <!-- Food photos -->
+    <div class="nourish-cell">
+      <img src="images/optimized/fish-plate-detail.jpg" alt="Beautifully plated dish" loading="lazy">
+    </div>
+    <div class="nourish-cell">
+      <img src="images/optimized/food-bowl-nourishment.jpg" alt="Nourishing food bowl" loading="lazy">
+    </div>
+    <div class="nourish-cell">
+      <img src="images/optimized/wildflower-macro.jpg" alt="Wildflower detail — fresh, seasonal" loading="lazy">
+    </div>
+    <div class="nourish-cell">
+      <img src="images/optimized/dessert-detail.jpg" alt="Dessert detail" loading="lazy">
+    </div>
+    <!-- Long table -->
+    <div class="nourish-cell">
+      <img src="images/optimized/dusk-table-staff.jpg" alt="Table setting at dusk" loading="lazy">
+    </div>
+    <div class="nourish-cell">
+      <img src="images/optimized/food-photo-1.jpg" alt="Fresh seasonal food" loading="lazy">
+    </div>
+    <div class="nourish-cell wide">
+      <img src="images/optimized/long-table-dusk.jpg" alt="Long-table dinner at dusk" loading="lazy">
+    </div>
+    <div class="nourish-cell">
+      <img src="images/optimized/food-photo-2.jpg" alt="Nourishing plant-based meal" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MEET YOUR TEAM
+     ============================================================ -->
+<section id="guides" class="section">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <p class="eyebrow">Your Guides for the Retreat</p>
+      <h2>Meet the team</h2>
+      <p>We're here to make sure your week is seamless and deeply worthwhile.</p>
+    </div>
+    <div class="grid-3" style="align-items:start;">
+      <!-- TARIN -->
+      <div class="guide-card fade-up">
+        <img class="guide-photo" src="images/optimized/tarin-headshot.jpg" alt="Tarin Calmeyer" loading="lazy">
+        <div class="guide-body">
+          <p class="eyebrow">Retreat Lead</p>
+          <h3>Tarin Calmeyer</h3>
+          <p class="guide-role">Yoga · Nervous System Reset</p>
+          <p>Tarin has spent over a decade designing and leading transformational retreats for individuals and organisations. She leads daily yoga sessions and nervous system reset workshops throughout the week, helping guests build practical tools they can carry home.</p>
+        </div>
+      </div>
+      <!-- VITALIY -->
+      <div class="guide-card fade-up fd-1">
+        <img class="guide-photo" src="images/optimized/vitaliy-headshot.jpg" alt="Vitaliy" loading="lazy">
+        <div class="guide-body">
+          <p class="eyebrow">Sound &amp; Breathwork</p>
+          <h3>Vitaliy</h3>
+          <p class="guide-role">Yoga · Sound Healing · Breathwork</p>
+          <p>Vitaliy leads yoga, group breathwork sessions, and evening sound healing throughout the retreat. His Tibetan singing bowl work — whether in a group sound bath or a private session — is consistently described by guests as one of the most memorable experiences of the week.</p>
+        </div>
+      </div>
+      <!-- BRITTANY -->
+      <div class="guide-card fade-up fd-2">
+        <img class="guide-photo" src="images/optimized/brittany-headshot.jpg" alt="Brittany" loading="lazy">
+        <div class="guide-body">
+          <p class="eyebrow">Logistics &amp; Guest Care</p>
+          <h3>Brittany</h3>
+          <p class="guide-role">Retreat Logistics · Guest Care</p>
+          <p>Brittany is the heart of the retreat's day-to-day operations. She handles logistics, coordinates everything behind the scenes, and is your go-to contact for anything you need during the week. If you want to debrief after a session or simply need something sorted, Brittany is who you talk to.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIAL PANEL — David K left, Harry video right
+     ============================================================ -->
+<section id="testimonial" class="testimonial-panel">
+  <div class="container">
+    <div class="testimonial-split">
+      <div class="testimonial-quote fade-up">
+        <blockquote>"We had a great experience working with Tarin and Remote Team Wellness to plan our leadership wellness retreat. From the planning stages to the delivery, wrap-up and reflection stages, everything was very smooth. Our team really enjoyed the whole experience and the venue was phenomenal. Tarin and her team were extremely attentive and created an off-site catered to our employees' needs and our company's objectives. I would highly recommend Remote Team Wellness for hosting and facilitating any company's wellness-focused events and off-sites."</blockquote>
+        <cite>David K &mdash; President, Sensirion</cite>
+      </div>
+      <div class="testimonial-video fade-up fd-1">
+        <div class="video-wrapper">
+          <video id="harry-video" controls preload="none" aria-label="Harry Edwards video testimonial">
+            <source src="images/optimized/harry-video-testimonial.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <button class="video-play-btn" id="video-play-btn" aria-label="Play Harry Edwards video testimonial">
+            <svg class="video-play-icon" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="44" cy="44" r="42" stroke="white" stroke-opacity="0.95" stroke-width="2.5"/>
+              <circle cx="44" cy="44" r="42" fill="rgba(169,135,106,0.18)"/>
+              <polygon points="34,26 68,44 34,62" fill="white"/>
+            </svg>
+          </button>
+        </div>
+        <p class="testimonial-video-caption">Harry Edwards — video testimonial</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ACCOMMODATION
+     Rooms directly below hero. Exterior images moved below.
+     ============================================================ -->
+<section id="lodge" style="padding:0;">
+  <!-- Bathroom hero — two bathrobes in the bathtub, kept -->
+  <div class="lodge-hero">
+    <img src="images/optimized/sashwa-bathroom-1.jpg" alt="Luxury clawfoot tub with botanical wall mural, silk robes, and candles" loading="lazy">
+    <div class="lodge-hero-caption">
+      <p class="eyebrow" style="color:var(--clay); margin-bottom:0.5rem;">Sashwa Lodge</p>
+      <h2>Where you will sleep</h2>
+      <p>A luxury bush lodge exclusive to the Kruger Retreat group — surrounded by the African wilderness, designed for deep rest.</p>
+    </div>
+  </div>
+  <!-- Room gallery directly below hero (moved up from below exterior images) -->
+  <div class="lodge-rooms-grid">
+    <div class="lodge-room-item">
+      <img src="images/optimized/sashwa-room-1.jpg" alt="Sashwa bedroom with double bed and wicker chairs" loading="lazy">
+    </div>
+    <div class="lodge-room-item">
+      <img src="images/optimized/sashwa-room-2.jpg" alt="Sashwa bedroom interior" loading="lazy">
+    </div>
+    <div class="lodge-room-item">
+      <img src="images/optimized/sashwa-room-3.jpg" alt="Sashwa suite" loading="lazy">
+    </div>
+  </div>
+  <!-- Amenities: lounge image + list -->
+  <div class="lodge-amenities">
+    <div class="lodge-amenity-img">
+      <img src="images/optimized/lodge-lounge-thatched.jpg" alt="Thatched lodge lounge interior" loading="lazy">
+    </div>
+    <div class="lodge-amenity-list">
+      <h3>Everything you need to rest</h3>
+      <ul>
+        <li>En-suite bathroom with luxury amenities</li>
+        <li>Air conditioning and ceiling fans</li>
+        <li>Private deck or garden area</li>
+        <li>Plunge pool and sun loungers</li>
+        <li>Wi-Fi throughout the lodge</li>
+        <li>Sauna access</li>
+        <li>Spa on-site — massage and spa treatments available at an additional cost</li>
+        <li>Yoga and practice deck with views over the African wilderness</li>
+        <li>Fully-inclusive vegetarian and plant-based meals</li>
+        <li>Morning and afternoon teas and refreshments</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Leisure + spa: pool, bathroom 2, yoga deck, spa foot ritual -->
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--stone);">
+    <div style="overflow:hidden; aspect-ratio:3/4;">
+      <img src="images/optimized/pool-lodge-daytime.jpg" alt="Lodge pool during the day" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="overflow:hidden; aspect-ratio:3/4;">
+      <img src="images/optimized/sashwa-bathroom-2.jpg" alt="Sashwa bathroom" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="overflow:hidden; aspect-ratio:3/4;">
+      <img src="images/optimized/yoga-deck.jpg" alt="Yoga deck overlooking the African wilderness" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="overflow:hidden; aspect-ratio:3/4;">
+      <img src="images/optimized/spa-foot-ritual.jpg" alt="Spa foot ritual" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+  <!-- Daybeds + deck + relaxation + spa treatment -->
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--stone);">
+    <div style="overflow:hidden; aspect-ratio:4/3;">
+      <img src="images/optimized/daybed-styled-sashwa.jpg" alt="Styled daybed at Sashwa lodge" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="overflow:hidden; aspect-ratio:4/3;">
+      <img src="images/optimized/river-deck-swing.jpg" alt="Swing on the river deck" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="overflow:hidden; aspect-ratio:4/3;">
+      <img src="images/optimized/relaxation-chair-daybeds.jpg" alt="Relaxation chairs and daybeds" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="overflow:hidden; aspect-ratio:4/3;">
+      <img src="images/optimized/spa-treatment-room.jpg" alt="Spa treatment room" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+  <!-- Exterior images (moved from above rooms) + garden -->
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--stone);">
+    <div style="overflow:hidden; aspect-ratio:4/3;">
+      <img src="images/optimized/lodge-cabin-golden-hour.jpg" alt="Lodge cabin exterior at golden hour" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="overflow:hidden; aspect-ratio:4/3;">
+      <img src="images/optimized/lodge-interior-room.jpg" alt="Lodge interior room" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="overflow:hidden; aspect-ratio:4/3;">
+      <img src="images/optimized/fat-dassie-room.jpg" alt="Lodge garden with sculpture and wildlife" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="overflow:hidden; aspect-ratio:4/3;">
+      <img src="images/optimized/close-up-yoga-mat.jpg" alt="Yoga mat detail" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHO THIS IS FOR
+     ============================================================ -->
+<section id="who" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="eyebrow">Who This Is For</p>
+      <h2>You belong here if…</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card fade-up">
+        <h4>Recovering from burnout</h4>
+        <p>You have been running on empty. This retreat slows the pace deliberately — safari mornings, rest in between, no agenda to keep up with.</p>
+      </div>
+      <div class="who-card fade-up fd-1">
+        <h4>Fulfilling a lifelong Africa dream</h4>
+        <p>You have always wanted to experience the real African wilderness. This is the way to do it — with depth, not just ticking boxes.</p>
+      </div>
+      <div class="who-card fade-up fd-2">
+        <h4>Curious about wellness practices</h4>
+        <p>Yoga, breathwork, sound healing — you are interested but not sure what to expect. Everything here is accessible and optional.</p>
+      </div>
+      <div class="who-card fade-up fd-3">
+        <h4>Traveling solo</h4>
+        <p>Most guests come alone. The group is small. Shared safari experiences create connection quickly — without it feeling forced.</p>
+      </div>
+      <div class="who-card fade-up">
+        <h4>Celebrating a transition</h4>
+        <p>A new chapter, a milestone, a moment you want to mark properly. Africa has a way of making things feel significant.</p>
+      </div>
+      <div class="who-card fade-up fd-1">
+        <h4>Ready to fully unplug</h4>
+        <p>Wi-Fi is available, but so is the option to leave your phone on the nightstand. Many guests find this to be the unexpected highlight.</p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem; font-size:0.95rem; color:var(--text-mid); max-width:560px;" class="fade-up fd-2">
+      <p><strong style="color:var(--text-dark);">This retreat is not for you if</strong> you are looking for an intense detox programme, a purely physical fitness retreat, or expect strict schedules and structured itineraries. The pace here is intentionally unhurried.</p>
+    </div>
+    <!-- Replacement image for "who this is not for" visual -->
+    <div style="margin-top:3rem; overflow:hidden; max-height:360px;" class="fade-up fd-3">
+      <img src="images/optimized/who-not-for.jpg" alt="Retreat setting in the African wilderness" loading="lazy" style="width:100%;object-fit:cover;object-position:center 40%;">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHAT'S INCLUDED
+     ============================================================ -->
+<section id="included" class="section section-dark">
+  <div class="container">
+    <div class="section-header section-header-light center fade-up">
+      <p class="eyebrow">What's Included</p>
+      <h2 style="color:var(--text-light);">Everything covered</h2>
+      <p style="color:var(--stone);">One all-inclusive price. No hidden costs.</p>
+    </div>
+    <div class="included-grid">
+      <div class="included-item fade-up">
+        <span class="included-icon">🏕️</span>
+        <div>
+          <h4>6 Nights Accommodation</h4>
+          <p>Luxury en-suite rooms at Sashwa Lodge, exclusive to the retreat group.</p>
+        </div>
+      </div>
+      <div class="included-item fade-up fd-1">
+        <span class="included-icon">🦁</span>
+        <div>
+          <h4>Daily Game Drives &amp; Guided Bushwalks</h4>
+          <p>Two safaris daily — sunrise and afternoon — with experienced local guides.</p>
+        </div>
+      </div>
+      <div class="included-item fade-up fd-2">
+        <span class="included-icon">🌿</span>
+        <div>
+          <h4>All Meals</h4>
+          <p>Vegetarian and plant-based breakfast, lunch, and dinner. Morning and afternoon refreshments throughout.</p>
+        </div>
+      </div>
+      <div class="included-item fade-up fd-3">
+        <span class="included-icon">🧘</span>
+        <div>
+          <h4>Full Wellness Programme</h4>
+          <p>Daily yoga, breathwork, meditation, and group sound healing.</p>
+        </div>
+      </div>
+      <div class="included-item fade-up">
+        <span class="included-icon">🎨</span>
+        <div>
+          <h4>Art Classes &amp; Stargazing</h4>
+          <p>Complimentary creative sessions and guided stargazing evenings under the African sky.</p>
+        </div>
+      </div>
+      <div class="included-item fade-up fd-1">
+        <span class="included-icon">♨️</span>
+        <div>
+          <h4>Sauna Access</h4>
+          <p>Full use of the lodge sauna throughout the retreat.</p>
+        </div>
+      </div>
+      <div class="included-item fade-up fd-2">
+        <span class="included-icon">🌅</span>
+        <div>
+          <h4>All Bush Activities</h4>
+          <p>Sundowners, fire circles, and wildlife viewing from the deck.</p>
+        </div>
+      </div>
+      <div class="included-item fade-up fd-3">
+        <span class="included-icon">🤝</span>
+        <div>
+          <h4>Small Group Experience</h4>
+          <p>Limited places ensure personal attention from all three team members throughout the week.</p>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:0.82rem; color:var(--stone); margin-top:2rem; text-align:center;" class="fade-up">
+      Not included: international and domestic flights, airport transfers, travel insurance, personal expenses, and optional paid add-on sessions. This is a sober retreat — alcohol is not provided.
+    </p>
+  </div>
+</section>
+
+<!-- Fire circle image break before FAQ -->
+<div style="width:100vw; position:relative; left:50%; transform:translateX(-50%); height:clamp(220px,30vw,420px); overflow:hidden;">
+  <img src="images/optimized/golden-hour-fire-circle.jpg" alt="Fire circle gathering at golden hour in the African wilderness" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;">
+</div>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section id="faq" class="section faq-section">
+  <div class="container" style="max-width:820px;">
+    <div class="section-header center fade-up">
+      <p class="eyebrow">FAQ</p>
+      <h2>Everything you need to know</h2>
+    </div>
+
+    <div class="faq-group fade-up">
+      <p class="faq-group-title">Is This Retreat Right for Me?</p>
+
+      <div class="faq-item">
+        <button class="faq-question">What makes this retreat different?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>This isn't just a safari, and it isn't just a wellness retreat.</p>
+          <p>It's a thoughtfully curated experience that combines the adventure of exploring the African wilderness with simple, powerful practices that help you slow down and fully experience it.</p>
+          <p>Imagine watching elephants at sunrise, sharing stories around the fire at night, practising gentle yoga overlooking the African wilderness, enjoying nourishing plant-based meals, relaxing in the sauna, and falling asleep beneath some of the clearest night skies on Earth.</p>
+          <p>Our intention is simple: for you to return home feeling refreshed, inspired, and more connected to yourself and the natural world.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">How do I know if this retreat is right for me?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>If you're craving adventure, rest, meaningful experiences, or simply a chance to disconnect from everyday life, this retreat was created with you in mind.</p>
+          <p>Whether you're celebrating a new chapter, recovering from burnout, travelling solo, or simply fulfilling a lifelong dream of visiting Africa, you'll find a welcoming space to experience this journey in your own way.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">I've never done yoga, meditation, or breathwork. Will I fit in?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Absolutely. Most guests are beginners.</p>
+          <p>Everything is taught in a simple, approachable way, and every practice is optional. There are no expectations, no pressure, and nothing to prove.</p>
+          <p>Come exactly as you are.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">I'm not a spiritual person. Is this retreat still for me?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. You don't need any particular beliefs to enjoy this experience.</p>
+          <p>Our approach is grounded in practices that support relaxation, mobility, better sleep, reduced stress, improved focus, and overall well-being. Whether you view them as wellness practices or simply a chance to slow down, you're welcome here.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">I'm travelling alone. Will I feel comfortable?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Absolutely. Many of our guests travel on their own.</p>
+          <p>Sharing incredible safari experiences naturally creates meaningful conversations and friendships, while still giving you plenty of opportunities to enjoy peaceful moments by yourself.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="faq-group fade-up">
+      <p class="faq-group-title">The Experience</p>
+
+      <div class="faq-item">
+        <button class="faq-question">What will a typical day look like?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Each day follows a relaxing rhythm designed to balance adventure with restoration.</p>
+          <p>You'll begin with an optional Morning Reset featuring gentle movement, breathwork, and meditation before heading into the African wilderness for a sunrise safari.</p>
+          <p>After a nourishing breakfast, you'll enjoy free time to relax, visit the sauna, schedule a massage or private Tibetan singing bowl session, paint, journal, photograph wildlife, or simply enjoy the peaceful surroundings.</p>
+          <p>Later in the day we'll gather for yoga or a Bush Wisdom session before heading back into the wild for another unforgettable safari. Evenings end with delicious dinners, yin yoga, meditation, sound healing, fireside gatherings, or guided stargazing beneath the African sky.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">How much time will we spend on safari?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Two game drives or walks per day.</p>
+          <p>Safari is one of the highlights of this retreat. You'll experience multiple sunrise and afternoon game drives throughout the week, exploring different areas of the Greater Kruger wilderness during the times when wildlife is most active.</p>
+          <p>No two safaris are ever the same — and that's part of what makes them so unforgettable.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What animals might we see?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Greater Kruger is one of the world's premier wildlife destinations.</p>
+          <p>Depending on nature, you may encounter the Big Five — lion, leopard, elephant, rhinoceros, and buffalo — as well as giraffes, zebras, cheetahs, hippos, crocodiles, hyenas, wildebeest, kudu, impalas, warthogs, baboons, monkeys, and hundreds of bird species.</p>
+          <p>Every drive brings new surprises.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Why do we practise breathwork?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Every emotion has a breathing pattern, and changing the way we breathe can influence how we feel.</p>
+          <p>Throughout the retreat you'll experience a variety of simple breathing techniques, each chosen for a different purpose. Some help calm the nervous system and reduce stress. Others gently increase energy, improve focus, promote emotional balance, support deeper sleep, or help you become fully present.</p>
+          <p>These practices are simple enough to continue at home and can become valuable tools for everyday life.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Why yoga?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Our yoga sessions are designed for real life.</p>
+          <p>Rather than focusing on difficult poses, we use gentle movement to release tension, improve mobility, restore balance, and help your body feel comfortable after travel and safari adventures.</p>
+          <p>When the body relaxes, the mind often follows.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Why meditation?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Africa has a remarkable way of slowing life down.</p>
+          <p>Meditation helps you become even more present for those moments — whether you're watching the sunrise over the African wilderness, listening to birds at dawn, or sitting quietly beneath a sky full of stars.</p>
+          <p>It's not about emptying your mind; it's about fully experiencing where you are.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What is sound healing?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>During the retreat you'll enjoy deeply relaxing group sound healing experiences using Tibetan singing bowls.</p>
+          <p>Guests may also book a private on-the-body Tibetan singing bowl session, where the bowls are gently placed on or around the body to create soothing vibrations that encourage deep relaxation and a profound sense of calm.</p>
+          <p>Many guests describe these as one of the most memorable experiences of the week.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What can I do during my free time?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Your free time is yours to enjoy however you'd like. You might:</p>
+          <ul>
+            <li>Relax in the sauna</li>
+            <li>Book a massage</li>
+            <li>Schedule a private on-the-body Tibetan singing bowl session</li>
+            <li>Join an art and painting experience</li>
+            <li>Journal or read</li>
+            <li>Photograph wildlife around the lodge</li>
+            <li>Enjoy meaningful conversations</li>
+            <li>Watch animals from the viewing deck</li>
+            <li>Simply sit quietly and soak in the beauty of Africa</li>
+          </ul>
+          <p>Some of the most magical moments happen when nothing is planned.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Will there be stargazing?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. Far from city lights, the night skies over Greater Kruger are breathtaking.</p>
+          <p>On select evenings we'll gather beneath the stars to slow down, reflect on the day, and appreciate the vastness of the African sky — a peaceful experience that many guests remember long after returning home.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What do guests usually leave with?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Of course you'll leave with incredible photographs and unforgettable safari memories.</p>
+          <p>What surprises many people is how they feel. More rested. More present. More grateful. More connected.</p>
+          <p>You'll also return home with practical tools — including breathing techniques, gentle movement practices, and mindfulness exercises — that can continue supporting your well-being long after the retreat ends.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="faq-group fade-up">
+      <p class="faq-group-title">Before You Travel</p>
+
+      <div class="faq-item">
+        <button class="faq-question">What kind of food will be served?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Our retreat features delicious, nourishing plant-based cuisine prepared with fresh seasonal ingredients.</p>
+          <p>Meals are thoughtfully designed to support energy, recovery, and overall well-being while celebrating vibrant, wholesome flavours.</p>
+          <p>If you have allergies or dietary restrictions, simply let us know in advance.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What should I pack?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>After reserving your place, you'll receive a detailed packing guide.</p>
+          <p>In general, bring comfortable clothing for yoga and relaxing, neutral-coloured safari clothing, comfortable walking shoes, a light jacket for cool mornings, sunscreen, sunglasses, a hat, insect repellent, your camera, personal medications, and a journal if you enjoy writing.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Will there be Wi-Fi?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. Complimentary Wi-Fi is available throughout the lodge should you wish to stay connected.</p>
+          <p>Many guests also choose to unplug for part of the week and fully immerse themselves in the experience.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Do I need vaccinations?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>If you're travelling directly from the United States, no routine vaccinations are required for entry into South Africa.</p>
+          <p>A Yellow Fever vaccination certificate is only required if you're arriving from, or recently travelled through, a country where Yellow Fever is present. We recommend consulting your healthcare provider or a travel clinic before international travel.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Should I take malaria medication?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Our retreat takes place in the Greater Kruger region, where malaria prevention is generally recommended during late November.</p>
+          <p>We encourage you to speak with your physician or a travel medicine specialist to determine the best option for your individual needs.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Is South Africa safe?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. You'll be staying at a luxury safari lodge and guided by experienced local professionals throughout your stay.</p>
+          <p>From the moment you arrive until the day you depart, every aspect of the retreat is thoughtfully planned so you can relax, feel supported, and confidently enjoy one of the world's most extraordinary destinations.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Do I need travel insurance?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>While travel insurance isn't required, we strongly recommend it.</p>
+          <p>A comprehensive policy can provide valuable peace of mind by covering unexpected cancellations, medical emergencies, travel delays, or lost luggage.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="faq-group fade-up">
+      <p class="faq-group-title">We'd Love to Meet You</p>
+
+      <div class="faq-item">
+        <button class="faq-question">I still have questions.<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Wonderful — that's exactly what our complimentary Discovery Call is for.</p>
+          <p>We'll answer your questions, get to know you, learn what you're hoping to experience, and help you determine if this retreat is the right fit.</p>
+          <p>If it feels aligned, you can reserve your place and begin counting down to an unforgettable week in South Africa.</p>
+          <p>We can't wait to welcome you to the African wilderness.</p>
+          <p style="margin-top:1.5rem;">
+            <a href="https://tally.so/r/PdPa81" target="_blank" rel="noopener" class="btn btn-primary">Apply &amp; Book a Discovery Call</a>
+          </p>
+        </div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING — single early bird price, payment plan, private suite info
+     ============================================================ -->
+<section id="pricing" class="section pricing-section">
+  <div class="container">
+    <div class="section-header section-header-light center fade-up">
+      <p class="eyebrow">Investment</p>
+      <h2 style="color:var(--text-light);">Pricing</h2>
+      <p style="color:var(--stone);">All-inclusive. Limited places available.</p>
+    </div>
+
+    <div class="pricing-single fade-up">
+      <span class="pricing-badge">Early Bird Price</span>
+      <h3>Kruger Retreat: Reset Revive and Feel Alive</h3>
+      <div class="pricing-price">$6,300 <span>per person</span></div>
+      <p class="pricing-note">All-inclusive · 6 nights · November 29 – December 5, 2025</p>
+      <ul class="pricing-features">
+        <li>6 nights at Sashwa Lodge</li>
+        <li>All meals — vegetarian and plant-based</li>
+        <li>Two daily game drives or guided bushwalks</li>
+        <li>Full wellness programme — yoga, breathwork, sound healing</li>
+        <li>Art classes and stargazing evenings</li>
+        <li>Sauna access and all lodge activities</li>
+      </ul>
+      <a href="https://tally.so/r/PdPa81" target="_blank" rel="noopener" class="btn btn-primary" style="display:block;text-align:center;">Apply Now</a>
+
+      <div class="pricing-notes">
+        <p><strong style="color:var(--text-light);">Private suites</strong> are available on a first-come, first-served basis. To reserve one, request it at the time of application and pay in full.</p>
+        <p><strong style="color:var(--text-light);">Payment plans</strong> are available. Contact us to discuss options.</p>
+        <p><strong style="color:var(--text-light);">All payments are due by 1 November 2025.</strong></p>
+      </div>
+    </div>
+
+    <div class="cancellation-box fade-up">
+      <h4>Cancellation</h4>
+      <p>In the very unlikely event the retreat is cancelled for any reason, you will receive a full refund.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section id="apply-cta" class="cta-section">
+  <p class="eyebrow fade-up">Limited Places Available</p>
+  <h2 class="fade-up fd-1">Ready for the ultimate bucket list experience in Africa?</h2>
+  <p class="fade-up fd-2">Apply now to secure your place. We review all applications and follow up with a short discovery call to make sure this retreat is the right fit for you.</p>
+  <div class="fade-up fd-3">
+    <a href="https://tally.so/r/PdPa81" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:0.85rem; padding:1.1rem 3rem;">Apply for the Kruger Retreat</a>
+  </div>
+  <p class="cta-meta fade-up fd-4">All payments due 1 November 2025</p>
+  <p class="cta-meta fade-up fd-4" style="margin-top:0.4rem;">29 November to 5 December · Greater Kruger, South Africa</p>
+</section>
+
+<!-- ============================================================
+     APPLICATION FORM
+     ============================================================ -->
+<section id="contact" class="section form-section">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <p class="eyebrow">Get in Touch</p>
+      <h2>Send us a message</h2>
+      <p>Have a question before you apply? We'd love to hear from you. You can also reach us directly at <a href="mailto:krugerretreat@gmail.com" style="color:var(--clay); border-bottom:1px solid rgba(169,135,106,0.4);">krugerretreat@gmail.com</a></p>
+    </div>
+    <div class="form-inner">
+      <form action="https://tally.so/r/PdPa81" method="GET" target="_blank">
+        <div class="form-grid">
+          <div class="form-group fade-up">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first_name" placeholder="Your first name" required>
+          </div>
+          <div class="form-group fade-up fd-1">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last_name" placeholder="Your last name" required>
+          </div>
+          <div class="form-group full fade-up fd-2">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group fade-up fd-3">
+            <label for="country">Country of Residence</label>
+            <input type="text" id="country" name="country" placeholder="Your country">
+          </div>
+          <div class="form-group fade-up fd-4">
+            <label for="room">Room Preference</label>
+            <select id="room" name="room_preference">
+              <option value="">Select preference</option>
+              <option value="shared">Shared Room ($6,300)</option>
+              <option value="private">Private Suite (request &amp; pay in full)</option>
+            </select>
+          </div>
+          <div class="form-group full fade-up">
+            <label for="message">Message or Questions</label>
+            <textarea id="message" name="message" placeholder="Tell us a little about yourself and what you're hoping to experience…"></textarea>
+          </div>
+        </div>
+        <div class="form-submit fade-up fd-1">
+          <button type="submit" class="btn btn-forest">Send Message</button>
+          <p class="form-disclaimer" style="margin-top:1rem;">By submitting, you'll be redirected to our full application form on Tally.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER — one link only
+     ============================================================ -->
+<footer>
+  <p>Kruger Retreat: Reset Revive and Feel Alive &nbsp;·&nbsp; 29 November – 5 December 2025 &nbsp;·&nbsp; Greater Kruger, South Africa</p>
+  <a href="https://tally.so/r/PdPa81" target="_blank" rel="noopener" class="footer-apply">Apply for the Retreat</a>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// --- NAV solid state on scroll ---
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 60);
+}, { passive: true });
+
+// --- Scroll reveal (IntersectionObserver) ---
+const revealEls = document.querySelectorAll('.fade-up');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// --- Video play button overlay ---
+const harryVideo = document.getElementById('harry-video');
+const harryPlayBtn = document.getElementById('video-play-btn');
+if (harryVideo && harryPlayBtn) {
+  harryPlayBtn.addEventListener('click', () => {
+    harryVideo.play();
+    harryPlayBtn.classList.add('hidden');
+  });
+  harryVideo.addEventListener('pause', () => harryPlayBtn.classList.remove('hidden'));
+  harryVideo.addEventListener('ended', () => harryPlayBtn.classList.remove('hidden'));
+}
+
+// --- FAQ accordion (single open) ---
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+  const btn = item.querySelector('.faq-question');
+  const answer = item.querySelector('.faq-answer');
+  btn.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    faqItems.forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-answer').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+</script>
+</body>
+</html>
